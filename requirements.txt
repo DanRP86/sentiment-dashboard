@@ -1,0 +1,8 @@
+streamlit
+pandas
+plotly
+vaderSentiment
+textblob
+nrclex
+langdetect
+openpyxl
