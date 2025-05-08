@@ -1,8 +1,4 @@
 import nltk
-nltk.download('punkt')
-nltk.download('brown')
-nltk.download('wordnet')
-
 import streamlit as st
 import pandas as pd
 import plotly.express as px
@@ -10,6 +6,10 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from textblob import TextBlob
 from nrclex import NRCLex
 from langdetect import detect, LangDetectException
+
+nltk.download('punkt')
+nltk.download('brown')
+nltk.download('wordnet')
 
 # Initialize sentiment analyzers
 vader_analyzer = SentimentIntensityAnalyzer()
