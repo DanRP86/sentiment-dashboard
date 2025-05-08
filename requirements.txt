@@ -6,3 +6,4 @@ textblob
 nrclex
 langdetect
 openpyxl
+nltk
