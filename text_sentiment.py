@@ -57,9 +57,12 @@ if text_input:
     polarity, subjectivity = analyze_textblob(text_input)
     nrc_emotions = analyze_nrc(text_input)
 
+    #Capitalize NRC emotion keys
+    nrc_emotions_cap = {k.capitalize(): v for k, v in nrc_emotions.items()}
+    
     data = {
-        "Metric": ["VADER Positive", "VADER Negative", "VADER Neutral", "VADER Compound", "TextBlob Polarity", "TextBlob Subjectivity"] + list(nrc_emotions.keys()),
-        "Score": [vader_scores["pos"] * 100, vader_scores["neg"] * 100, vader_scores["neu"] * 100, vader_scores["compound"] * 100, polarity * 100, subjectivity * 100] + list(nrc_emotions.values())
+        "Metric": ["General Positive", "General Negative", "General Neutral", "General Compound", "General Polarity", "General Subjectivity"] + list(nrc_emotions_cap.keys()),
+        "Score": [vader_scores["pos"] * 100, vader_scores["neg"] * 100, vader_scores["neu"] * 100, vader_scores["compound"] * 100, polarity * 100, subjectivity * 100] + list(nrc_emotions_cap.values())
     }
     df = pd.DataFrame(data)
 
@@ -67,13 +70,13 @@ if text_input:
     st.dataframe(df)
 
     color_map = {
-        "VADER Positive": "green", "VADER Negative": "red", "VADER Neutral": "blue", "VADER Compound": "purple",
-        "TextBlob Polarity": "green", "TextBlob Subjectivity": "blue"
+        "General Positive": "green", "General Negative": "red", "General Neutral": "blue", "General Compound": "purple",
+        "General Polarity": "green", "General Subjectivity": "blue"
     }
-    for emotion in nrc_emotions:
-        if emotion in ["positive", "joy", "trust", "anticipation", "surprise"]:
+    for emotion in nrc_emotions_cap:
+        if emotion.lower() in ["positive", "joy", "trust", "anticipation", "surprise"]:
             color_map[emotion] = "green"
-        elif emotion in ["negative", "anger", "disgust", "fear", "sadness"]:
+        elif emotion.lower() in ["negative", "anger", "disgust", "fear", "sadness"]:
             color_map[emotion] = "red"
         else:
             color_map[emotion] = "blue"
