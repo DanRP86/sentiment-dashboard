@@ -1,3 +1,7 @@
+import nltk
+nltk.download('punkt')
+nltk.download('brown')
+
 import streamlit as st
 import pandas as pd
 import plotly.express as px
@@ -33,7 +37,7 @@ def analyze_nrc(text):
 st.title("Sentiment Analysis Dashboard")
 
 # Sample input text
-sample_text = "Streamlit is an amazing tool for creating data apps. I love using it!"
+sample_text = "This is an amazing tool for quickly analyze emotions from text. I love using it!"
 
 # Input text box
 text_input = st.text_area("Enter text to analyze:", sample_text, height=200)
