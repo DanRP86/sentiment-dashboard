@@ -1,3 +1,4 @@
+
 import nltk
 import streamlit as st
 import pandas as pd
@@ -86,6 +87,3 @@ if text_input:
     st.write("Created by Daniel Rubio")
     csv = df.to_csv(index=False).encode('utf-8')
     st.download_button("Download results as CSV", data=csv, file_name="sentiment_analysis_results.csv", mime="text/csv")
-
-
-#Put in the console: streamlit run text_sentiment.py
