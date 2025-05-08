@@ -9,7 +9,16 @@ from langdetect import detect, LangDetectException
 
 nltk.download('punkt')
 nltk.download('brown')
+nltk.download('averaged_perceptron_tagger')
 nltk.download('wordnet')
+nltk.download('stopwords')
+
+
+try:
+    nltk.data.find('tokenizers/punkt')
+except LookupError:
+    nltk.download('punkt')
+
 
 # Initialize sentiment analyzers
 vader_analyzer = SentimentIntensityAnalyzer()
