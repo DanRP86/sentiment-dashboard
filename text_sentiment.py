@@ -1,6 +1,7 @@
 import nltk
 nltk.download('punkt')
 nltk.download('brown')
+nltk.download('wordnet')
 
 import streamlit as st
 import pandas as pd
