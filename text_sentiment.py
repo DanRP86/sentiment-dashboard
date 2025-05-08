@@ -1,5 +1,6 @@
 
 import nltk
+import textblob.download_corpora
 import streamlit as st
 import pandas as pd
 import plotly.express as px
@@ -8,16 +9,13 @@ from textblob import TextBlob
 from nrclex import NRCLex
 from langdetect import detect, LangDetectException
 
-# Function to download NLTK corpora
-def download_nltk_corpora():
-    nltk.download('punkt')
-    nltk.download('brown')
-    nltk.download('averaged_perceptron_tagger')
-    nltk.download('wordnet')
-    nltk.download('stopwords')
-
-# Ensure corpora are downloaded before analysis
-download_nltk_corpora()
+# Download required corpora
+nltk.download('punkt')
+nltk.download('brown')
+nltk.download('averaged_perceptron_tagger')
+nltk.download('wordnet')
+nltk.download('stopwords')
+textblob.download_corpora.download_all()
 
 # Initialize sentiment analyzer
 vader_analyzer = SentimentIntensityAnalyzer()
